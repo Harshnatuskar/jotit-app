@@ -26,17 +26,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.jotit.R
 import com.example.jotit.data.EntryEvent
 import com.example.jotit.data.EntryState
 import com.example.jotit.data.SortType
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.navigation.NavHostController
-import com.example.jotit.R
 import com.example.jotit.ui.theme.GeneralSans
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,7 +53,7 @@ fun EntryScreen(
                         fontFamily = GeneralSans,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 22.sp
-                        )},
+                    )},
                     modifier = Modifier.fillMaxWidth()
                 )
                 Divider(
@@ -86,61 +86,62 @@ fun EntryScreen(
             }
         }
     ) { padding ->
-        Column {
-            LazyColumn(
-                contentPadding = padding,
-                modifier = Modifier.fillMaxSize()
-                    .padding(start = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                item {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .horizontalScroll(rememberScrollState()),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        SortType.entries.forEach { sortType ->
-                            Row(
-                                modifier = Modifier
-                                    .clickable {
-                                        onEvent(EntryEvent.SortEntry(sortType))
-                                    },
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                // Add sorts in the future if required
-                            }
+        if(state.isAddingEntry) {
+            AddEntryDialog(state = state, onEvent = onEvent)
+        }
+        LazyColumn(
+            contentPadding = padding,
+            modifier = Modifier.fillMaxSize()
+                .padding(start = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState()),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SortType.entries.forEach { sortType ->
+                        Row(
+                            modifier = Modifier
+                                .clickable {
+                                    onEvent(EntryEvent.SortEntry(sortType))
+                                },
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            // Add sorts in the future if required
                         }
                     }
                 }
-                items(state.entries) { entry ->
-                    Row(
-                        modifier = Modifier.fillMaxWidth()
+            }
+            items(state.entries) { entry ->
+                Row(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        modifier = Modifier.weight(1f)
                     ) {
-                        Column(
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Text(
-                                text = "${entry.entryDate}",
-                                fontFamily = GeneralSans,
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 18.sp
-                            )
-                            Text(
-                                text = entry.gratitude,
-                                fontFamily = GeneralSans,
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 12.sp
-                            )
-                        }
-                        IconButton(onClick = {
-                            onEvent(EntryEvent.DeleteEntry(entry))
-                        }) {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = "Delete Contact"
-                            )
-                        }
+                        Text(
+                            text = "${entry.entryDate}",
+                            fontFamily = GeneralSans,
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 18.sp
+                        )
+                        Text(
+                            text = entry.gratitude,
+                            fontFamily = GeneralSans,
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 12.sp
+                        )
+                    }
+                    IconButton(onClick = {
+                        onEvent(EntryEvent.DeleteEntry(entry))
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Delete Contact"
+                        )
                     }
                 }
             }

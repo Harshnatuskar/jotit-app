@@ -15,6 +15,6 @@ interface EntryDao {
     @Delete
     suspend fun deleteEntry(entry: Entry)
 
-    @Query("SELECT * FROM entry ORDER BY entryDate ASC")
+    @Query("SELECT * FROM entry ORDER BY entryDate DESC")
     fun getEntriesOrderedByDate(): Flow<List<Entry>>
 }
