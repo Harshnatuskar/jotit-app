@@ -1,6 +1,5 @@
 package com.example.jotit.presentation
 
-import android.media.metrics.Event
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +14,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,21 +24,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.jotit.data.Entry
 import com.example.jotit.data.EntryEvent
 import com.example.jotit.data.EntryState
 import com.example.jotit.data.SortType
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavHostController
 import com.example.jotit.R
 
 @Composable
 fun EntryScreen(
     state: EntryState,
-    onEvent: (EntryEvent) -> Unit
+    onEvent: (EntryEvent) -> Unit,
+    navController: NavHostController
 ){
     Scaffold(
         floatingActionButton = {
@@ -48,7 +43,7 @@ fun EntryScreen(
                 FloatingActionButton(
                     modifier = Modifier.padding(bottom = 16.dp),
                     onClick = {
-
+                        navController.navigate("void_screen")
                     }) {
                     Icon(
                         painter = painterResource(id = R.drawable.sparks),
