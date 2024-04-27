@@ -32,7 +32,7 @@ import com.example.jotit.data.SortType
 @Composable
 fun EntryScreen(
     state: EntryState,
-    onEvent: (EntryEvent) -> Event
+    onEvent: (EntryEvent) -> Unit
 ){
     Scaffold(
         floatingActionButton = {

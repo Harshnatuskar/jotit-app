@@ -23,7 +23,7 @@ import com.example.jotit.data.EntryState
 @Composable
 fun AddEntryDialog(
     state: EntryState,
-    onEvent: (EntryEvent) -> Event,
+    onEvent: (EntryEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
     AlertDialog(
