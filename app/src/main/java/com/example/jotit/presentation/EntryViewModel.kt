@@ -1,4 +1,4 @@
-package com.example.jotit
+package com.example.jotit.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
