@@ -1,4 +1,4 @@
-package com.example.jotit
+package com.example.jotit.data
 
 enum class SortType {
     DATE,

@@ -1,6 +1,5 @@
-package com.example.jotit
+package com.example.jotit.data
 
-import android.provider.ContactsContract.CommonDataKinds.Contactables
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
