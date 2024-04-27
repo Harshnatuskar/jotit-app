@@ -72,7 +72,8 @@ fun EntryScreen(
 
         LazyColumn(
             contentPadding = padding,
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize()
+                .padding(top = 10.dp, start = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             item{

@@ -1,6 +1,8 @@
 package com.example.jotit.ui.theme
 
 import android.app.Activity
+import androidx.compose.ui.graphics.Color
+
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -57,8 +59,10 @@ fun JotitTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            // Set status bar color
+            window.statusBarColor = if (darkTheme) Color.Black.toArgb() else Color.LightGray.toArgb()
+            // Set status bar appearance
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
