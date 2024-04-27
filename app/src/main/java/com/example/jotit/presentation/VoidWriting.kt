@@ -48,8 +48,6 @@ fun VoidWriting() {
                 itemsIndexed(textEntries) { index, entry ->
                     Text(
                         text = entry,
-                        fontFamily = GeneralSans,
-                        fontWeight = FontWeight.Normal,
                         color = Color.Black.copy(alpha = calculateOpacity(index)),
                         fontSize = 16.sp,
                         modifier = Modifier.padding(horizontal = 8.dp)

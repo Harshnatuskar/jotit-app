@@ -19,7 +19,7 @@ data class Entry(
     companion object {
         // Function to get the current date in the desired format
         private fun getCurrentDate(): String {
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val dateFormat = SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault())
             val currentDate = Date()
             return dateFormat.format(currentDate)
         }
