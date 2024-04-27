@@ -53,7 +53,7 @@ fun AddEntryDialog(
                         onEvent(EntryEvent.SetTodayGreat(it))
                     },
                     placeholder = {
-                        Text(text = "today great:")
+                        Text(text = "What would make today great?")
                     }
                 )
                 TextField(

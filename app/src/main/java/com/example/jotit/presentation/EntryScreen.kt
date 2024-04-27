@@ -91,13 +91,14 @@ fun EntryScreen(
                             text = entry.gratitude,
                             fontSize = 12.sp
                         )
-                        IconButton(onClick = {
-                            onEvent(EntryEvent.DeleteEntry(entry))
-                        }) {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = "Delete Contact")
-                        }
+
+                    }
+                    IconButton(onClick = {
+                        onEvent(EntryEvent.DeleteEntry(entry))
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Delete Contact")
                     }
                 }
             }
