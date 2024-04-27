@@ -21,9 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jotit.ui.theme.GeneralSans
 
 @Composable
 fun VoidWriting() {
@@ -46,6 +48,8 @@ fun VoidWriting() {
                 itemsIndexed(textEntries) { index, entry ->
                     Text(
                         text = entry,
+                        fontFamily = GeneralSans,
+                        fontWeight = FontWeight.Normal,
                         color = Color.Black.copy(alpha = calculateOpacity(index)),
                         fontSize = 16.sp,
                         modifier = Modifier.padding(horizontal = 8.dp)
@@ -70,7 +74,11 @@ fun VoidWriting() {
                     .padding(horizontal = 16.dp),
                 decorationBox = { innerTextField ->
                     if (text.isEmpty()) {
-                        Text("Empty your mind...", color = Color.Gray, fontSize = 16.sp)
+                        Text("Empty your mind...",
+                            fontFamily = GeneralSans,
+                            fontWeight = FontWeight.Normal,
+                            color = Color.Gray,
+                            fontSize = 16.sp)
                     }
                     innerTextField()
                 }
