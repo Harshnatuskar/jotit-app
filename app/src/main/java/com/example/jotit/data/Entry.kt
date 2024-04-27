@@ -12,7 +12,7 @@ data class Entry(
     val id: Int=0,
     val entryDate: String = getCurrentDate(),
     val gratitude: String,
-    val greatToday: String,
+    val todayGreat: String,
     val amazingThings: String,
     val betterThings: String
 ){
