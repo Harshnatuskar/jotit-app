@@ -52,6 +52,28 @@ fun AddEntryDialog(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 TextField(
+                    value = state.amazingThings,
+                    onValueChange = {
+                        onEvent(EntryEvent.SetAmazingThings(it))
+                    },
+                    placeholder = {
+                        Text(text = "Amazing things that happened the day before:",
+                            fontFamily = GeneralSans,
+                            fontWeight = FontWeight.Normal)
+                    }
+                )
+                TextField(
+                    value = state.betterThings,
+                    onValueChange = {
+                        onEvent(EntryEvent.SetBetterThings(it))
+                    },
+                    placeholder = {
+                        Text(text = "Things that I would have done better:",
+                            fontFamily = GeneralSans,
+                            fontWeight = FontWeight.Normal)
+                    }
+                )
+                TextField(
                     value = state.gratitude,
                     onValueChange = {
                         onEvent(EntryEvent.SetGratitude(it))
@@ -74,28 +96,7 @@ fun AddEntryDialog(
                             fontWeight = FontWeight.Normal)
                     }
                 )
-                TextField(
-                    value = state.amazingThings,
-                    onValueChange = {
-                        onEvent(EntryEvent.SetAmazingThings(it))
-                    },
-                    placeholder = {
-                        Text(text = "Amazing things that happened today:",
-                            fontFamily = GeneralSans,
-                            fontWeight = FontWeight.Normal)
-                    }
-                )
-                TextField(
-                    value = state.betterThings,
-                    onValueChange = {
-                        onEvent(EntryEvent.SetBetterThings(it))
-                    },
-                    placeholder = {
-                        Text(text = "Things that I would do better:",
-                            fontFamily = GeneralSans,
-                            fontWeight = FontWeight.Normal)
-                    }
-                )
+
             }
         },
         confirmButton = {
