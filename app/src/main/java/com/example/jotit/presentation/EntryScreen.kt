@@ -1,6 +1,7 @@
 package com.example.jotit.presentation
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -21,6 +23,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -64,8 +67,8 @@ fun EntryScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Divider(
-                    color = Color.DarkGray,
-                    thickness = 1.dp,
+                    color = Color.Gray,
+                    thickness = 1.4.dp,
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -73,7 +76,15 @@ fun EntryScreen(
         floatingActionButton = {
             Column {
                 FloatingActionButton(
-                    modifier = Modifier.padding(bottom = 16.dp),
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .border(
+                            BorderStroke(0.05.dp, Color.LightGray),
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .size(56.dp),
+                    containerColor = Color.Transparent,
+                    elevation = FloatingActionButtonDefaults.elevation(0.dp),
                     onClick = {
                         navController.navigate("void_screen")
                     }) {
@@ -82,7 +93,17 @@ fun EntryScreen(
                         contentDescription = "Void Writing"
                     )
                 }
-                FloatingActionButton(onClick = {
+                FloatingActionButton(
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .border(
+                            BorderStroke(0.05.dp, Color.LightGray),
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .size(56.dp),
+                    containerColor = Color.Transparent,
+                    elevation = FloatingActionButtonDefaults.elevation(0.dp),
+                    onClick = {
                     onEvent(EntryEvent.ShowDialog)
                 }) {
                     Icon(
@@ -129,7 +150,10 @@ fun EntryScreen(
                         .fillMaxWidth()
                         .height(58.dp)
                         .border(
-                            BorderStroke(0.01.dp, Color.LightGray), // Adjusted border color to be lighter
+                            BorderStroke(
+                                0.05.dp,
+                                Color.LightGray
+                            ), // Adjusted border color to be lighter
                             shape = RoundedCornerShape(8.dp),
                         )
                         .padding(horizontal = 8.dp, vertical = 4.dp)
